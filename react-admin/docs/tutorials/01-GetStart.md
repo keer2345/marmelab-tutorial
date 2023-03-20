@@ -61,3 +61,20 @@ Lastly, add the `Roboto` font to the `index.html` file:
 > You can also install the `Roboto` font locally by following the instructions from the [MUI starter guide](https://mui.com/material-ui/getting-started/installation/#roboto-font).
 
 # Mapping API Endpoints With Resources
+```diff
+// in src/App.tsx
+-import { Admin } from "react-admin";
++import { Admin, Resource, ListGuesser } from "react-admin";
+import jsonServerProvider from "ra-data-json-server";
+
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+
+-const App = () => <Admin dataProvider={dataProvider} />;
++const App = () => (
++ <Admin dataProvider={dataProvider}>
++   <Resource name="users" list={ListGuesser} />
++ </Admin>
++);
+
+export default App;
+```
